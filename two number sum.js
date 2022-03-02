@@ -42,4 +42,29 @@ function twoNumberSum1(array, targetSum) {
 numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 console.log(twoNumberSum1(numberArray, 10));
 
-// Third approach
+// Third approach (sorting and then adding lowest to highest and finding the solution)
+
+function twoNumberSum(array, targetSum) {
+  array.sort((a, b) => a - b);
+  let left = 0;
+  let right = array.length - 1;
+
+  console.log(array[left]);
+  console.log(array[right]);
+  while (left < right) {
+    const currentSum = array[left] + array[right];
+    console.log(currentSum);
+    if (currentSum === targetSum) {
+      console.log([array[left], array[right]]);
+      return [array[left], array[right]];
+    } else if (currentSum < targetSum) {
+      left++;
+    } else if (currentSum > targetSum) {
+      right--;
+    }
+  }
+  return [];
+}
+
+// Do not edit the line below.
+exports.twoNumberSum = twoNumberSum;
